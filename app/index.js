@@ -53,17 +53,13 @@ const server = http.createServer((req, res) => {
       var payloadString = JSON.stringify(payload);
 
       // Return the response
+      res.setHeader('Content-Type', 'application/json');
       res.writeHead(statusCode);
       res.end(payloadString);
 
       // Log
       console.log('Returning this response: ', statusCode, payloadString);
     });
-
-    // Doing some loggings
-    // console.log(`Request received on path: ${trimmedPath} with method: ${method} and with these query string parameters:`, queryStringObject);
-    // console.log('Request received with these headers: ', headers);
-    // console.log('Request received with this payload: ', buffer);
   });
 });
 
