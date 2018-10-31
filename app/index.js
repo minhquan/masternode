@@ -86,10 +86,15 @@ handlers.sample = (data, callback) => {
   callback(406, { 'name': 'sample handler' });
 };
 
+handlers.ping = (data, callback) => {
+  callback(200);
+};
+
 // Not found handler
 handlers.notFound = (data, callback) => callback(404);
 
 // Define a request router
 var router = {
-  'sample': handlers.sample
+  'sample': handlers.sample,
+  'ping': handlers.ping
 }
