@@ -4,8 +4,8 @@ const url = require('url');
 
 // Instantiate and start the server
 const httpServer = http.createServer((req, res) => {
-   // Get the url and parse it
-   var parsedUrl = url.parse(req.url, true);
+  // Get the url and parse it
+  var parsedUrl = url.parse(req.url, true);
 
   // Get the path
   var trimmedPath = parsedUrl.pathname.replace(/^\/+|\/+$/g, '');
@@ -25,6 +25,7 @@ const httpServer = http.createServer((req, res) => {
     // Use the payload called back by the handler, or default to an empty object
     payload = typeof (payload) == 'object' ? payload : {};
 
+    // Convert the payload object to JSON string
     var payloadString = JSON.stringify(payload);
 
     // Return the response
@@ -49,7 +50,7 @@ handlers.sayHello = (data, callback) => {
 // Not found handler
 handlers.notFound = (data, callback) => callback(404);
 
-// Define a request route
+// Define request route(s)
 const router = {
   'hello': handlers.sayHello
 };
